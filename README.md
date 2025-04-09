@@ -39,9 +39,13 @@
 
 ## 运行步骤
 ### 安装Python包  
-目前依赖的包有 akshare, openai, pandas, requests, difflib, python-dotenv  
+目前依赖的包有 akshare openai pandas requests difflib python-dotenv ipykernel  transformers 
 ~~~shell
-pip install akshare, openai, pandas, requests, difflib, python-dotenv  
+conda create --name stock  python=3.10
+
+conda activate stock
+
+pip install akshare openai pandas requests difflib python-dotenv ipykernel  transformers 
 ~~~
 其中[AKShare](https://github.com/akfamily/akshare) 是基于 Python 的财经数据接口库，目的是实现对股票、期货、期权、基金、外汇、债券、指数、加密货币等金融产品的基本面数据、实时和历史行情数据、衍生数据。以及新闻、公告、基本面、股票热度人气。 从数据采集、数据清洗到数据落地的一套工具。  
 
