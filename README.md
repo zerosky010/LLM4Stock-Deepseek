@@ -18,11 +18,14 @@
 · [0_初始化股票列表.ipynb](0_初始化股票列表.ipynb) 使用AKShare，爬取全量股票列表，对每只股票从巨潮资讯网获取公司概况、历史简称等信息，并进行合并、清洗。  
 · [1_获取历史简称_bak.ipynb](1_获取历史简称_bak.ipynb) 使用AKShare，从新浪财经，获取股票历史简称。由于 巨潮资讯 已提供历史简称变更信息，所以这个文件仅供参考，不再需要执行了。  
 · [2_新闻匹配股票.ipynb](2_新闻匹配股票.ipynb) 使用AKShare获取财联社电报；从电报内容中解析出股票名称，匹配股票代码。  
-· [3_LLM对新闻进行解读.ipynb](3_LLM对新闻进行解读.ipynb) 使用LLM对财联社电报进行解读；LLM当前使用的是ChatGPT 3.5，由于ChatGPT在中国无法直接访问，故使用 [API2D的转发接口](https://api2d-doc.apifox.cn/api-84787447)。考虑到复杂的Prompt，或可能需要在一次提问中批量查询，故还加入了计算token数量的函数。  
+· [3_LLM对新闻进行解读.ipynb](3_LLM对新闻进行解读.ipynb) 使用LLM对财联社电报进行解读；LLM当前使用的是ChatGPT 3.5，由于ChatGPT在中国无法直接访问，故使用 [API2D的转发接口](https://api2d-doc.apifox.cn/api-84787447)。
+· [4_使用deepseek对新闻进行解读.ipynb](4_使用deepseek对新闻进行解读.ipynb) 使用DS对财联社电报进行解读；采用万码云DS接口。
+考虑到复杂的Prompt，或可能需要在一次提问中批量查询，故还加入了计算token数量的函数。  
 
 提示词：  
 · [system_prompt.md](system_prompt.md) 输入给LLM的提示词。由于格式较为复杂，故独立成文件，程序运行时将读取并输入给LLM。  
-· [system_prompt_啰嗦版.md](system_prompt_啰嗦版.md) 在system_prompt.md的基础上多，针对不同的新闻场景加了几个示例，后来发现ChatGPT一个示例就够了，其它LLM可能需要多个示例。保留以供参考。  
+· [system_prompt_啰嗦版.md](system_prompt_啰嗦版.md) 在system_prompt.md的基础上，针对不同的新闻场景加了几个示例，后来发现ChatGPT一个示例就够了，其它LLM可能需要多个示例。保留以供参考。  
+· [system_prompt-gold.md](system_prompt-gold.md) 在system_prompt.md的基础上，针对黄金投资的提示词。 
 
 ## 数据存储  
 目前采用csv格式存储，位于 data 目录下。  
@@ -65,6 +68,9 @@ openai_key = 'OpenAI的key'
 
 # api2d
 api2d_Authorization = 'api2d的验证，格式是 Bearer fk····'
+
+# DS
+DS_key =
 ~~~
 如果代码要传git，记得将 .env 添加到 .gitignore 中。  
 ### 注册快代理
@@ -79,6 +85,9 @@ akshare本质上是爬虫，对一些数据源（比如巨潮资讯、新浪财�
 由于OpenAI在国内无法直接调用，需要使用代理转发，我用的是API2D。  
 注册地址： https://www.api2d.com/r/210668  
 接口地址： https://api2d-doc.apifox.cn/api-84787447  
+
+## 万码云API
+https://wcode.net/deepseek-llm-api
 
 ## 参考资料  
 · [提示工程指南](https://www.promptingguide.ai/zh)  
