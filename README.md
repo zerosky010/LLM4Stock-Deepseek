@@ -1,4 +1,4 @@
-# 基于LLM的股票投资决策系统  
+# 基于LLM(Deepseek)的股票投资决策系统  
 ## 背景
 2023年LLM领域的突破性进展，进一步强化了量化投资中对新闻资讯进行分析解读的深度。  
 [唐岳华博士的论文](https://mp.weixin.qq.com/s/sfhK0hjCKXUU-d74-6KrQQ) 对此进行了证明：使用2021年10月至2022年12月美国证券价格研究中心公开的真实股市数据和新闻进行测试，基于ChatGPT提供的“多空策略”交易建议，预测股市走势，在此期间最理想状态下的投资组合回报率达到了惊人的500%。  
@@ -18,14 +18,14 @@
 · [0_初始化股票列表.ipynb](0_初始化股票列表.ipynb) 使用AKShare，爬取全量股票列表，对每只股票从巨潮资讯网获取公司概况、历史简称等信息，并进行合并、清洗。  
 · [1_获取历史简称_bak.ipynb](1_获取历史简称_bak.ipynb) 使用AKShare，从新浪财经，获取股票历史简称。由于 巨潮资讯 已提供历史简称变更信息，所以这个文件仅供参考，不再需要执行了。  
 · [2_新闻匹配股票.ipynb](2_新闻匹配股票.ipynb) 使用AKShare获取财联社电报；从电报内容中解析出股票名称，匹配股票代码。  
-· [3_LLM对新闻进行解读.ipynb](3_LLM对新闻进行解读.ipynb) 使用LLM对财联社电报进行解读；LLM当前使用的是ChatGPT 3.5，由于ChatGPT在中国无法直接访问，故使用 [API2D的转发接口](https://api2d-doc.apifox.cn/api-84787447)。<br>
+· [3_LLM对新闻进行解读.ipynb](3_LLM对新闻进行解读.ipynb) 使用LLM对财联社电报进行解读；LLM当前使用的是ChatGPT 3.5，由于ChatGPT在中国无法直接访问，故使用 [API2D的转发接口](https://api2d-doc.apifox.cn/api-84787447)。<br><br>
 2025.4.9<br>
 · [4_使用deepseek对新闻进行解读.ipynb](4_使用deepseek对新闻进行解读.ipynb) 使用DS对财联社电报进行解读；采用万码云DS接口。
 考虑到复杂的Prompt，或可能需要在一次提问中批量查询，故还加入了计算token数量的函数。  
 
 提示词：  
 · [system_prompt.md](system_prompt.md) 输入给LLM的提示词。由于格式较为复杂，故独立成文件，程序运行时将读取并输入给LLM。  
-· [system_prompt_啰嗦版.md](system_prompt_啰嗦版.md) 在system_prompt.md的基础上，针对不同的新闻场景加了几个示例，后来发现ChatGPT一个示例就够了，其它LLM可能需要多个示例。保留以供参考。  <br>
+· [system_prompt_啰嗦版.md](system_prompt_啰嗦版.md) 在system_prompt.md的基础上，针对不同的新闻场景加了几个示例，后来发现ChatGPT一个示例就够了，其它LLM可能需要多个示例。保留以供参考。  <br><br>
 2025.4.9<br>
 · [system_prompt-gold.md](system_prompt-gold.md) 在system_prompt.md的基础上，针对黄金投资的提示词。 
 
